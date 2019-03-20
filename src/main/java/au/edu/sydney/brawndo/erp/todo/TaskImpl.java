@@ -1,0 +1,85 @@
+package au.edu.sydney.brawndo.erp.todo;
+
+import java.time.LocalDateTime;
+
+import static au.edu.sydney.brawndo.erp.todo.Task.Field.DESCRIPTION;
+import static au.edu.sydney.brawndo.erp.todo.Task.Field.LOCATION;
+
+public class TaskImpl implements Task{
+
+    private static int id;
+    private static LocalDateTime dateTime;
+    private static String location;
+    private static String description;
+    private static boolean isComp =false;
+
+    public TaskImpl(Integer id, LocalDateTime dateTime, String location, String description){
+        this.id = id;
+        this.dateTime = dateTime;
+        this.location = location;
+        this.description = description;
+    }
+
+    @Override
+    public int getID() {
+        return this.id;
+    }
+
+    @Override
+    public LocalDateTime getDateTime() {
+        return this.dateTime;
+    }
+
+    @Override
+    public String getLocation() {
+        return this.location;
+    }
+
+    @Override
+    public String getDescription() {
+        return this.description;
+    }
+
+    @Override
+    public boolean isCompleted() {
+        return this.isComp;
+    }
+
+    @Override
+    public void setDateTime(LocalDateTime dateTime) throws IllegalArgumentException{
+        this.dateTime = dateTime;
+    }
+
+    @Override
+    public void setLocation(String location) throws IllegalArgumentException {
+        this.location = location;
+    }
+
+    @Override
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public void complete() throws IllegalStateException {
+        this.isComp = true;
+    }
+
+    @Override
+    public String getField(Task.Field field) throws IllegalArgumentException {
+
+            if (field == LOCATION){
+                return this.location;
+            }
+            if (field==DESCRIPTION){
+                return this.description;
+            }
+            return null;
+
+    }
+
+
+    enum Field{
+        LOCATION, DESCRIPTION
+    }
+}
