@@ -18,6 +18,7 @@ public class TaskImpl implements Task{
         this.dateTime = dateTime;
         this.location = location;
         this.description = description;
+        this.isComp = false;
     }
 
     @Override
@@ -62,6 +63,9 @@ public class TaskImpl implements Task{
 
     @Override
     public void complete() throws IllegalStateException {
+        if(this.isCompleted()==true){
+            throw new IllegalStateException("task already completed");
+        }
         this.isComp = true;
     }
 
