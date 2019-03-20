@@ -134,8 +134,17 @@ public class TaskImplTest {
         String description = "Testtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt";
         Task task = new TaskImpl(testId,testLDT,testLocation,testDescription);
         task.setDescription(description);
-        assertEquals("Long location not as expected", description, task.getDescription());
+        assertEquals("Long description not as expected", description, task.getDescription());
     }
+
+    @Test
+    public void getField(){
+        Task task = new TaskImpl(testId,testLDT,testLocation,testDescription);
+        assertEquals("Field location not as expected", testLocation, task.getField(Task.Field.LOCATION));
+        assertEquals("Field Description not as expected", testDescription, task.getField(Task.Field.DESCRIPTION));;
+    }
+
+
 
 
 

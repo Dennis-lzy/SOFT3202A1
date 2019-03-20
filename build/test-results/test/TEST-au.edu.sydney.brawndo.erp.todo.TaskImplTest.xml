@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="au.edu.sydney.brawndo.erp.todo.TaskImplTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2019-03-20T21:41:51" hostname="DESKTOP-2GBR9MJ" time="0.027">
+<testsuite name="au.edu.sydney.brawndo.erp.todo.TaskImplTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2019-03-20T21:48:06" hostname="DESKTOP-2GBR9MJ" time="0.027">
   <properties/>
-  <testcase name="getDateTime_timeLow" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.021"/>
-  <testcase name="setDateTime_High" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
+  <testcase name="getDateTime_timeLow" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.02"/>
+  <testcase name="setDateTime_High" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="setDateTime_Low" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
-  <testcase name="setLocation_Short" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
-  <testcase name="getID_idHigh" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
+  <testcase name="setLocation_Short" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
+  <testcase name="getID_idHigh" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="getDescription_Long" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="getID_idLOW" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="getDateTime_timeHigh" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
@@ -16,7 +16,8 @@
   <testcase name="isCompleted_true" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="getLocation_Long" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="setDescription_Long" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
-  <testcase name="isCompleted_false" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
+  <testcase name="getField" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
+  <testcase name="isCompleted_false" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
