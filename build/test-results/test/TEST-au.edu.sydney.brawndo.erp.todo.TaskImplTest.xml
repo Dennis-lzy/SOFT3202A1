@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="au.edu.sydney.brawndo.erp.todo.TaskImplTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2019-03-20T21:48:06" hostname="DESKTOP-2GBR9MJ" time="0.027">
+<testsuite name="au.edu.sydney.brawndo.erp.todo.TaskImplTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2019-03-20T22:13:14" hostname="DESKTOP-2GBR9MJ" time="0.028">
   <properties/>
-  <testcase name="getDateTime_timeLow" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.02"/>
+  <testcase name="getDateTime_timeLow" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.018"/>
   <testcase name="setDateTime_High" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="setDateTime_Low" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
-  <testcase name="setLocation_Short" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
-  <testcase name="getID_idHigh" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
+  <testcase name="setLocation_Short" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
+  <testcase name="getID_idHigh" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
   <testcase name="getDescription_Long" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="getID_idLOW" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="getDateTime_timeHigh" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>

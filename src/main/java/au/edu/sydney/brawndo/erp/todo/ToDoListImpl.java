@@ -7,10 +7,12 @@ import java.util.Map;
 
 public class ToDoListImpl implements ToDoList {
 
-    private List<Task> tdl = new ArrayList<>();
+    private List<Task> tdl;
     private int idCount;
 
     public ToDoListImpl() {
+        idCount = 0;
+        tdl = new ArrayList<>();
     }
 
     @Override
@@ -42,31 +44,76 @@ public class ToDoListImpl implements ToDoList {
 
     @Override
     public Task findOne(int id) {
+        for(Task task: this.tdl){
+            if(id == task.getID()){
+               return task;
+            }
+        }
         return null;
     }
 
     @Override
     public List<Task> findAll() {
-        return null;
+        List<Task> findAll = new ArrayList<>(tdl);
+        return findAll;
     }
 
     @Override
     public List<Task> findAll(boolean completed) {
-        return null;
+        List<Task> findAll = new ArrayList<>(tdl);
+        for(Task task: findAll){
+            if(task.isCompleted()==false){
+                findAll.remove(task);
+            }
+        }
+        return findAll;
     }
 
     @Override
     public List<Task> findAll(LocalDateTime from, LocalDateTime to, Boolean completed) throws IllegalArgumentException {
-        return null;
+        if(from == null){
+            from = LocalDateTime.MIN;
+        }
+
+        if(to==null){
+            to = LocalDateTime.MAX;
+        }
+        List<Task> findAll = new ArrayList<>(tdl);
+        for(Task task: findAll){
+            if(task.getDateTime().isBefore(from) || task.getDateTime().isAfter(to)){
+                findAll.remove(task);
+            }
+            if(task.isCompleted()==false){
+                findAll.remove(task);
+            }
+        }
+        return findAll;
     }
 
     @Override
     public List<Task> findAll(Map<Task.Field, String> params, LocalDateTime from, LocalDateTime to, Boolean completed, boolean andSearch) throws IllegalArgumentException {
-        return null;
+
+
+        if(from == null){
+            from = LocalDateTime.MIN;
+        }
+        if(to==null){
+            to = LocalDateTime.MAX;
+        }
+        List<Task> findAll = new ArrayList<>(tdl);
+        for(Task task: findAll){
+            if(task.getDateTime().isBefore(from) || task.getDateTime().isAfter(to)){
+                findAll.remove(task);
+            }
+            if(task.isCompleted()==false){
+                findAll.remove(task);
+            }
+        }
+        return findAll;
     }
 
     @Override
     public void clear() {
-
+        this.tdl.clear();
     }
 }
