@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class ToDoListImpl implements ToDoList {
 
-    private List<Task> tdl;
+    public static List<Task> tdl;
     private int idCount;
     private boolean setFlag;
 
@@ -28,7 +28,6 @@ public class ToDoListImpl implements ToDoList {
         }
 
         int idHolder;
-        Task task;
 
         if(setFlag == false){
             if(id==null){
@@ -36,6 +35,7 @@ public class ToDoListImpl implements ToDoList {
                 idCount++;
             } else {
                 idHolder = id;
+                setFlag = true;
             }
         } else {
             if(id==null){
@@ -53,9 +53,11 @@ public class ToDoListImpl implements ToDoList {
             }
         }
 
-        task = new TaskImpl(idHolder,dateTime,location,description);
+        Task task = new TaskImpl(idHolder,dateTime,location,description);
 
-        tdl.add(task);
+        System.out.printf("add task.location " + task.getLocation() + " and ID " + task.getID());
+
+        this.tdl.add(task);
 
         return task;
     }
@@ -108,9 +110,6 @@ public class ToDoListImpl implements ToDoList {
 
     @Override
     public List<Task> findAll(LocalDateTime from, LocalDateTime to, Boolean completed) throws IllegalArgumentException {
-        if(to.isBefore(from)){
-            throw new IllegalArgumentException("end dateTime cannot be before starting datetime");
-        }
         if(from == null){
             from = LocalDateTime.MIN;
         }
@@ -118,6 +117,10 @@ public class ToDoListImpl implements ToDoList {
         if(to==null){
             to = LocalDateTime.MAX;
         }
+        if(to.isBefore(from)){
+            throw new IllegalArgumentException("end dateTime cannot be before starting datetime");
+        }
+
         List<Task> findAll = findAll(completed);
         for(Task task: findAll) {
             if (task.getDateTime().isBefore(from) || task.getDateTime().isAfter(to)) {
@@ -137,21 +140,40 @@ public class ToDoListImpl implements ToDoList {
             return findAll;
         }
         for(Task t: findAll) {
+            boolean removeFlag = false;
             for (Map.Entry<Task.Field, String> entry : params.entrySet()) {
                 if (entry.getKey() == null || entry.getValue() == null) {
                     throw new IllegalArgumentException("null values in Map");
                 }
-
                 if (andSearch) {
+                    /** if fields do not contain value then mark task to remove **/
+                    if(entry.getKey()== Task.Field.LOCATION){
+                        if(!t.getLocation().contains(entry.getValue())){
+                            removeFlag = true;
+                        }
+                    } else {
+                        if(!t.getDescription().contains(entry.getValue())){
+                            removeFlag = true;
+                        }
+                    }
+                } else {
+                    removeFlag = true;
                     if(entry.getKey()== Task.Field.LOCATION){
                         if(t.getLocation().contains(entry.getValue())){
-
+                            removeFlag = false;
+                        }
+                    } else {
+                        if(t.getDescription().contains(entry.getValue())){
+                            removeFlag = false;
                         }
                     }
                 }
             }
+            if(removeFlag){
+                findAllM.remove(t);
+            }
         }
-        return findAll;
+        return findAllM;
     }
 
     @Override

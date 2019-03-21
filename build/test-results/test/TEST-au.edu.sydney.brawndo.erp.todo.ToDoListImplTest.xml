@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-03-21T03:28:05" hostname="DESKTOP-2GBR9MJ" time="0.02">
+<testsuite name="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-03-21T10:12:30" hostname="DESKTOP-2GBR9MJ" time="0.005">
   <properties/>
-  <testcase name="add_SameSetID" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.019"/>
-  <testcase name="add_setID" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.001"/>
+  <testcase name="add_SameSetID" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.002"/>
+  <testcase name="remove_empty" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.0"/>
+  <testcase name="findAllMapAnd" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.0"/>
+  <testcase name="remove_existingSingle" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.001"/>
+  <testcase name="add_setToNull" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.0"/>
+  <testcase name="add_nullToSet" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.0"/>
   <testcase name="add_nullId" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="findAllMapOR" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.0"/>
+  <system-out><![CDATA[add task.location Sydney and ID 1add task.location Sydney and ID 10add task.location Victoria and ID 5add task.location Victoriaqqqqqk and ID 6add task.location Sydney and ID 10add task.location Sydney and ID 10add task.location Sydney and ID 0add task.location Victoria and ID 4add task.location Sydney and ID 0add task.location Sydney and ID 10add task.location Victoria and ID 5add task.location Victoriadjkfsak and ID 6]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

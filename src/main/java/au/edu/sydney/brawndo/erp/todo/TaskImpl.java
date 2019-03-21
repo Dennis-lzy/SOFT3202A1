@@ -15,9 +15,9 @@ public class TaskImpl implements Task{
 
     public TaskImpl(Integer id, LocalDateTime dateTime, String location, String description){
         this.id = id;
-        this.dateTime = dateTime;
-        this.location = location;
-        this.description = description;
+        this.setDateTime(dateTime);
+        this.setLocation(location);
+        this.setDescription(description);
         this.isComp = false;
     }
 
