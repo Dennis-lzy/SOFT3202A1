@@ -1,47 +1,6 @@
-0add task.location Sydney and ID 00 Sydney Test
-3add task.location Melbourne and ID 10 Sydney Test
-1 Melbourne Test
-4add task.location Melbourne1 and ID 20 Sydney Test
-1 Melbourne Test
-2 Melbourne1 Test
-4add task.location Melbourne2 and ID 30 Sydney Test
-1 Melbourne Test
-2 Melbourne1 Test
-3 Melbourne2 Test
-4add task.location Melbourne3 and ID 40 Sydney Test
-1 Melbourne Test
-2 Melbourne1 Test
-3 Melbourne2 Test
-4 Melbourne3 Test
-2add task.location Victoria and ID 50 Sydney Test
-1 Melbourne Test
-2 Melbourne1 Test
-3 Melbourne2 Test
-4 Melbourne3 Test
-5 Victoria Test2
-0 Sydney Test
-1 Melbourne Test
-2 Melbourne1 Test
-3 Melbourne2 Test
-4 Melbourne3 Test
-5 Victoria Test2
-0add task.location Sydney and ID 11 Sydney Test
-2add task.location Sydney and ID 1010 Sydney Test
-3add task.location Victoria and ID 510 Sydney Test
-5 Victoria Test2
-9add task.location Victoriaqqqqqk and ID 610 Sydney Test
-5 Victoria Test2
-6 Victoriaqqqqqk Testaqqqqqda
-test list And Sydney Test
-2add task.location Sydney and ID 1010 Sydney Test
-3add task.location Sydney and ID 1010 Sydney Test2
-0add task.location Sydney and ID 00 Sydney Test
-2add task.location Victoria and ID 40 Sydney Test
-4 Victoria Test
- 0add task.location Sydney and ID 00 Sydney Test
-!2add task.location Sydney and ID 1010 Sydney Test
-!3add task.location Victoria and ID 510 Sydney Test
-!5 Victoria Test2
-!:add task.location Victoriadjkfsak and ID 610 Sydney Test
-!5 Victoria Test2
-!6 Victoriadjkfsak Testasda
+0 Sydney Test
+1 Melbourne Test
+2 Melbourne1 Test
+3 Melbourne2 Test
+4 Melbourne3 Test
+5 Victoria Test2

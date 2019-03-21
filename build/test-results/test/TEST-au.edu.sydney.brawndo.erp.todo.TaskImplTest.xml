@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="au.edu.sydney.brawndo.erp.todo.TaskImplTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2019-03-21T11:11:28" hostname="DESKTOP-2GBR9MJ" time="0.026">
+<testsuite name="au.edu.sydney.brawndo.erp.todo.TaskImplTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2019-03-21T12:45:21" hostname="DESKTOP-2GBR9MJ" time="0.022">
   <properties/>
-  <testcase name="getDateTime_timeLow" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.019"/>
-  <testcase name="setDateTime_High" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
+  <testcase name="getDateTime_timeLow" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.016"/>
+  <testcase name="setDateTime_High" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="setDateTime_Null" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="setDateTime_Low" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="setLocation_Short" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
@@ -10,15 +10,15 @@
   <testcase name="getDescription_Long" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="getID_idLOW" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="getDateTime_timeHigh" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
-  <testcase name="setLocation_Long" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
-  <testcase name="complete_exception" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
+  <testcase name="setLocation_Long" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
+  <testcase name="complete_exception" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
   <testcase name="getLocation_short" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="getDescription_Short" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <testcase name="setLocaiton_Null" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
-  <testcase name="isCompleted_true" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
+  <testcase name="isCompleted_true" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
   <testcase name="getLocation_Long" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
   <testcase name="setDescription_Long" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
-  <testcase name="getField" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
+  <testcase name="getField" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.001"/>
   <testcase name="isCompleted_false" classname="au.edu.sydney.brawndo.erp.todo.TaskImplTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

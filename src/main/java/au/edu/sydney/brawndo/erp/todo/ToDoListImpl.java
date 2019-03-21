@@ -55,13 +55,8 @@ public class ToDoListImpl implements ToDoList {
 
         Task task = new TaskImpl(idHolder,dateTime,location,description);
 
-        System.out.printf("add task.location " + task.getLocation() + " and ID " + task.getID());
-
         this.tdl.add(task);
 
-        for(Task i : this.tdl){
-            System.out.println(i.getID() +" " +i.getLocation()+ " " +i.getDescription());
-        }
         return task;
     }
 
@@ -96,19 +91,20 @@ public class ToDoListImpl implements ToDoList {
 
     @Override
     public List<Task> findAll(boolean completed) {
-        List<Task> findAll = findAll();
-        for(Task task: findAll){
+        List<Task> findAllC = findAll();
+        for(Task task: findAll()){
             if(completed==true) {
                 if (task.isCompleted() == false) {
-                    findAll.remove(task);
+                    findAllC.remove(task);
                 }
-            } else if (completed == false){
+            }
+            if (completed == false){
                 if  (task.isCompleted()==true){
-                    findAll.remove(task);
+                    findAllC.remove(task);
                 }
             }
         }
-        return findAll;
+        return findAllC;
     }
 
     @Override
@@ -124,25 +120,24 @@ public class ToDoListImpl implements ToDoList {
             throw new IllegalArgumentException("end dateTime cannot be before starting datetime");
         }
 
-        List<Task> findAll = findAll(completed);
-        for(Task task: findAll) {
+        List<Task> findAllT = findAll(completed);
+        for(Task task: findAll(completed)) {
             if (task.getDateTime().isBefore(from) || task.getDateTime().isAfter(to)) {
-                findAll.remove(task);
+                findAllT.remove(task);
             }
         }
 
-        return findAll;
+        return findAllT;
     }
 
     @Override
     public List<Task> findAll(Map<Task.Field, String> params, LocalDateTime from, LocalDateTime to, Boolean completed, boolean andSearch) throws IllegalArgumentException {
-        List<Task> findAll = findAll(to,from,completed);
-        List<Task> findAllM = new ArrayList<>(findAll);
+        List<Task> findAllM = findAll(to,from,completed);
 
         if(params == null) {
-            return findAll;
+            return findAllM;
         }
-        for(Task t: findAll) {
+        for(Task t: findAll(to,from,completed)) {
             boolean removeFlag = false;
             for (Map.Entry<Task.Field, String> entry : params.entrySet()) {
                 if (entry.getKey() == null || entry.getValue() == null) {

@@ -84,38 +84,121 @@ public class ToDoListImplTest {
         assertEquals("Did not return null as expected for findOne", null, tdl.findOne(43));
     }
 
-
-
+    @Test
+    public void findOne_testFindAllDoesntChangeTDL(){
+        tdl.add(null,tLDT,tLoc,tDes);
+        tdl.add(null,tLDT,"Melbourne",tDes);
+        tdl.add(null,tLDT,"Melbourne1",tDes);
+        tdl.add(null,tLDT,"Melbourne2",tDes);
+        tdl.add(null,tLDT,"Melbourne3",tDes);
+        tdl.findAll().clear();
+        assertNotNull("Changes to findALl affected ToDOList", tdl.findOne(2));
+    }
 
     @Test
-    public void findAllMapAnd(){
-        ToDoList TDList = new ToDoListImpl();
-        Map params = new HashMap();
-        params.put(Task.Field.LOCATION,tLoc);
-        params.put(Task.Field.DESCRIPTION,tDes);
-        TDList.add(tId,tLDT,tLoc,tDes);
-        TDList.add(tId2,tLDT2,tLoc2,tDes2);
-        TDList.add(tId2+1,tLDT2,tLoc2+"qqqqqk",tDes+"aqqqqqda");
-        List<Task> test = TDList.findAll(params,null,null,false,true);
-        for(Task i : test){
-            System.out.println("test list And " +i.getLocation()+" " +i.getDescription());
+    public void findAll_normal (){
+        tdl.add(null,tLDT,tLoc,tDes);
+        tdl.add(null,tLDT,"Melbourne",tDes);
+        tdl.add(null,tLDT,"Melbourne1",tDes);
+        tdl.add(null,tLDT,"Melbourne2",tDes);
+        assertEquals("Not all tasks included", 4, tdl.findAll().size());
+        assertEquals("Not all tasks included", "Sydney", tdl.findOne(0).getLocation());
+        assertEquals("Not all tasks included", "Melbourne", tdl.findOne(1).getLocation());
+        assertEquals("Not all tasks included", "Melbourne1", tdl.findOne(2).getLocation());
+        assertEquals("Not all tasks included", "Melbourne2", tdl.findOne(3).getLocation());
+    }
+
+    @Test
+    public void findAll_empty(){
+        assertTrue("findAll should be empty",tdl.findAll().isEmpty());
+    }
+
+    @Test
+    public void findAllComp_normal(){
+        tdl.add(null,tLDT,tLoc,tDes);
+        tdl.add(null,tLDT,"Melbourne",tDes);
+        tdl.add(null,tLDT,"Melbourne1",tDes);
+        tdl.add(null,tLDT,"Melbourne2",tDes);
+        tdl.findOne(0).complete();
+
+        //for (Task t:tdl.findAll(true)) {
+         //   System.out.println(t.getID() + " " +t.getLocation());
+        //}
+        for(Task t:tdl.findAll(true)) {
+            assertTrue("Did not filter out not completed",t.isCompleted());
+        }
+        tdl.findOne(2).complete();
+        tdl.findOne(3).complete();
+        for(Task t:tdl.findAll(LocalDateTime.now(), LocalDateTime.MAX,true)) {
+            assertTrue("Did not filter out not completed",t.isCompleted());
         }
     }
 
     @Test
-    public void findAllMapOR(){
-        ToDoList TDList = new ToDoListImpl();
+    public void findAll_Time(){
+        tdl.add(null,LocalDateTime.now().plusDays(5),tLoc,tDes);
+        tdl.add(null,LocalDateTime.now().plusDays(1000),"Melbourne",tDes);
+        tdl.add(null,LocalDateTime.now().minusDays(23),"Melbourne1",tDes);
+        tdl.add(null,LocalDateTime.now().minusDays(1232),"Melbourne2",tDes);
+        for(Task t:tdl.findAll(LocalDateTime.now(), LocalDateTime.MAX.minusDays(50),false)) {
+            assertTrue("Time is after time boundary",t.getDateTime().isBefore(LocalDateTime.MAX.minusDays(50)));
+            assertTrue("Time is before time boundary",t.getDateTime().isAfter(LocalDateTime.now()));
+        }
+        tdl.findOne(1).complete();
+        for(Task t:tdl.findAll(LocalDateTime.now(), LocalDateTime.MAX.minusDays(50),true)) {
+            assertTrue("Time is after time boundary",t.getDateTime().isBefore(LocalDateTime.MAX.minusDays(50)));
+            assertTrue("Time is before time boundary",t.getDateTime().isAfter(LocalDateTime.now()));
+            assertTrue("Did not filter out not completed",t.isCompleted());
+        }
+
+    }
+
+    @Test
+    public void findAll_TimeNull (){
+        tdl.add(null,LocalDateTime.now().plusDays(5),tLoc,tDes);
+        tdl.add(null,LocalDateTime.now().plusDays(1000),"Melbourne",tDes);
+        tdl.add(null,LocalDateTime.now().minusDays(23),"Melbourne1",tDes);
+        tdl.add(null,LocalDateTime.now().minusDays(1232),"Melbourne2",tDes);
+        assertTrue("null param behaviour incorrect for findAll Time, comp", tdl.findAll(true).equals(tdl.findAll(null,null,true)));
+        assertTrue("null param behaviour incorrect for findAll Time, not comp", tdl.findAll(false).equals(tdl.findAll(null,null,false)));
+    }
+
+
+    @Test
+    public void findAllMapAnd(){
+        ToDoList tdl = new ToDoListImpl();
         Map params = new HashMap();
         params.put(Task.Field.LOCATION,tLoc);
         params.put(Task.Field.DESCRIPTION,tDes);
-        params.put(Task.Field.LOCATION,tLoc2);
-        params.put(Task.Field.LOCATION,tDes2);
-        TDList.add(tId,tLDT,tLoc,tDes);
-        TDList.add(tId2,tLDT2,tLoc2,tDes2);
-        TDList.add(tId2+1,tLDT2,tLoc2+"djkfsak",tDes+"asda");
-        List<Task> test = TDList.findAll(params,null,null,false,false);
+        tdl.add(tId,tLDT,tLoc,tDes);
+        tdl.add(tId2,tLDT2,tLoc2,tDes2);
+        tdl.add(53,tLDT,tLoc,tDes);
+        tdl.add(20,tLDT,"Melbourne1",tDes);
+        tdl.add(742,tLDT,"Melbourne2",tDes);
+        tdl.add(tId2+1,tLDT2,tLoc2+"qqqqqk",tDes+"aqqqqqda");
+        List<Task> test = tdl.findAll(params,null,null,false,true);
         for(Task i : test){
-            System.out.println("test list OR " +i.getLocation()+ " " +i.getDescription());
+            assertTrue(i.getLocation() == tLoc);
+            assertTrue(i.getDescription() == tDes);
+        }
+    }
+
+
+    @Test
+    public void findAllMapOR(){
+        ToDoList tdl = new ToDoListImpl();
+        Map params = new HashMap();
+        params.put(Task.Field.LOCATION,tLoc);
+        params.put(Task.Field.DESCRIPTION,tDes);
+        tdl.add(tId,tLDT,tLoc,tDes);
+        tdl.add(tId2,tLDT2,tLoc2,tDes2);
+        tdl.add(53,tLDT,tLoc,tDes);
+        tdl.add(20,tLDT,"Melbourne1",tDes);
+        tdl.add(742,tLDT,"Melbourne2",tDes);
+        tdl.add(tId2+1,tLDT2,tLoc2+"qqqqqk",tDes+"aqqqqqda");
+        List<Task> test = tdl.findAll(params,null,null,false,true);
+        for(Task i : test){
+            assertTrue(i.getLocation() == tLoc||i.getDescription() == tDes);
         }
     }
 
@@ -138,6 +221,15 @@ public class ToDoListImplTest {
         assertFalse("did not return false as expected fr remove", tdl.remove(5));
     }
 
-    @clear
+    @Test
+    public void clear() {
+        tdl.add(null, tLDT, tLoc, tDes);
+        tdl.add(null, tLDT, "Melbourne", tDes);
+        tdl.add(null, tLDT, "Melbourne1", tDes);
+        tdl.add(null, tLDT, "Melbourne2", tDes);
+        tdl.add(null, tLDT, "Melbourne3", tDes);
+        tdl.clear();
+        assertEquals("elements left after clear", 0, tdl.findAll().size());
+    }
 
 }
