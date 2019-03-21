@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class ToDoListImpl implements ToDoList {
 
-    public static List<Task> tdl;
+    public List<Task> tdl;
     private int idCount;
     private boolean setFlag;
 
@@ -59,6 +59,9 @@ public class ToDoListImpl implements ToDoList {
 
         this.tdl.add(task);
 
+        for(Task i : this.tdl){
+            System.out.println(i.getID() +" " +i.getLocation()+ " " +i.getDescription());
+        }
         return task;
     }
 

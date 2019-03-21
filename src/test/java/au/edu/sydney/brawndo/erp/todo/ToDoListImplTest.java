@@ -51,17 +51,41 @@ public class ToDoListImplTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void add_SameSetID(){
-        ToDoList TDList = new ToDoListImpl();
-        TDList.add(1, tLDT, tLoc, tDes);
-        TDList.add(1, tLDT, tLoc, tDes);
+       tdl.add(1, tLDT, tLoc, tDes);
+       tdl.add(1, tLDT, tLoc, tDes);
     }
 
     @Test
     public void add_nullId(){
-        ToDoList TDList = new ToDoListImpl();
-        TDList.add(null, tLDT, tLoc, tDes);
-        assertEquals("Task not added to list", 1, TDList.findAll().size());
+        tdl.add(null, tLDT, tLoc, tDes);
+        assertEquals("Task not added to list", 1, tdl.findAll().size());
     }
+
+    @Test
+    public void findOne_normal(){
+        tdl.add(null,tLDT,tLoc,tDes);
+        tdl.add(null,tLDT,"Melbourne",tDes);
+        tdl.add(null,tLDT,"Melbourne1",tDes);
+        tdl.add(null,tLDT,"Melbourne2",tDes);
+        tdl.add(null,tLDT,"Melbourne3",tDes);
+        tdl.add(tId2,tLDT2,tLoc2,tDes2);
+        assertEquals("Task not added to list", 6, tdl.findAll().size());
+        for(Task i : tdl.findAll()){
+            System.out.println(i.getID() +" " +i.getLocation()+ " " +i.getDescription());
+        }
+        assertEquals("find one normal is not working 1 ", "Sydney", tdl.findOne(0).getLocation());
+        assertEquals("find one normal is not working 2 ", "Melbourne", tdl.findOne(1).getLocation());
+        assertEquals("find one normal is not working 3 ", "Melbourne1", tdl.findOne(2).getLocation());
+        assertEquals("find one normal is not working 4 ", "Melbourne2", tdl.findOne(3).getLocation());
+    }
+
+    @Test
+    public void findOne_null(){
+        assertEquals("Did not return null as expected for findOne", null, tdl.findOne(43));
+    }
+
+
+
 
     @Test
     public void findAllMapAnd(){
@@ -108,5 +132,12 @@ public class ToDoListImplTest {
         assertTrue("Removing existing form list failed", TDList.remove(tId));
         assertTrue("List not empty after removing only element", TDList.findAll().isEmpty());
     }
+
+    @Test
+    public void remove_false(){
+        assertFalse("did not return false as expected fr remove", tdl.remove(5));
+    }
+
+    @clear
 
 }

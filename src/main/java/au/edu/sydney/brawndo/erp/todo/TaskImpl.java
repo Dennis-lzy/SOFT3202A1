@@ -7,11 +7,11 @@ import static au.edu.sydney.brawndo.erp.todo.Task.Field.LOCATION;
 
 public class TaskImpl implements Task{
 
-    private static int id;
-    private static LocalDateTime dateTime;
-    private static String location;
-    private static String description;
-    private static boolean isComp =false;
+    private int id;
+    private LocalDateTime dateTime;
+    private String location;
+    private String description;
+    private boolean isComp =false;
 
     public TaskImpl(Integer id, LocalDateTime dateTime, String location, String description){
         this.id = id;
