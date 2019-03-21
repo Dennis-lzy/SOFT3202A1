@@ -113,6 +113,14 @@ public class TaskImplTest {
         assertEquals("High LDT not as expected", LocalDateTime.MIN, task.getDateTime());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void setDateTime_Null(){
+        LocalDateTime LDT = null;
+        Task task = new TaskImpl(testId,testLDT,testLocation,testDescription);
+        task.setDateTime(LDT);
+
+    }
+
     @Test
     public void setLocation_Long(){
         String location = "Testtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt";
@@ -127,6 +135,13 @@ public class TaskImplTest {
         Task task = new TaskImpl(testId,testLDT,testLocation,testDescription);
         task.setLocation(location);
         assertEquals("short location not as expected", location, task.getLocation());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void setLocaiton_Null() {
+        String location = null;
+        Task task = new TaskImpl(testId, testLDT, testLocation, testDescription);
+        task.setLocation(location);
     }
 
     @Test

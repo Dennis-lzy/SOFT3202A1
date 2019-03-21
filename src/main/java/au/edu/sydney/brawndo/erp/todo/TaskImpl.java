@@ -48,11 +48,17 @@ public class TaskImpl implements Task{
 
     @Override
     public void setDateTime(LocalDateTime dateTime) throws IllegalArgumentException{
+        if(dateTime == null){
+            throw new IllegalArgumentException("Datetime cannot be null");
+        }
         this.dateTime = dateTime;
     }
 
     @Override
     public void setLocation(String location) throws IllegalArgumentException {
+        if(location == null){
+            throw new IllegalArgumentException("location cannot be null");
+        }
         this.location = location;
     }
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-03-21T03:28:05" hostname="DESKTOP-2GBR9MJ" time="0.02">
+  <properties/>
+  <testcase name="add_SameSetID" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.019"/>
+  <testcase name="add_setID" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.001"/>
+  <testcase name="add_nullId" classname="au.edu.sydney.brawndo.erp.todo.ToDoListImplTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

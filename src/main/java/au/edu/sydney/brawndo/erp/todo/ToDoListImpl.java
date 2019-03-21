@@ -9,23 +9,54 @@ public class ToDoListImpl implements ToDoList {
 
     private List<Task> tdl;
     private int idCount;
+    private boolean setFlag;
 
     public ToDoListImpl() {
         idCount = 0;
         tdl = new ArrayList<>();
+        setFlag = false;
     }
 
     @Override
     public Task add(Integer id, LocalDateTime dateTime, String location, String description) throws IllegalArgumentException, IllegalStateException {
-        Task task = new TaskImpl(this.idCount, dateTime, location, description);
+        /** return IllegalArgumentException if date time of location is null**/
         if(dateTime == null){
             throw new IllegalArgumentException("dateTime cannot be null");
         }
         if(location==null){
             throw new IllegalArgumentException("location cannot be null");
         }
+
+        int idHolder;
+        Task task;
+
+        if(setFlag == false){
+            if(id==null){
+                idHolder = idCount;
+                idCount++;
+            } else {
+                idHolder = id;
+            }
+        } else {
+            if(id==null){
+                throw new IllegalArgumentException("Id cannot be null after an ID is set");
+            } else {
+                idHolder = id;
+            }
+        }
+
+        if(id!=null){
+            for(Task t: this.tdl){
+                if(idHolder == t.getID()){
+                    throw new IllegalArgumentException("ID is taken");
+                }
+            }
+        }
+
+        task = new TaskImpl(idHolder,dateTime,location,description);
+
         tdl.add(task);
-        this.idCount++;
+
         return task;
     }
 
@@ -60,10 +91,16 @@ public class ToDoListImpl implements ToDoList {
 
     @Override
     public List<Task> findAll(boolean completed) {
-        List<Task> findAll = new ArrayList<>(tdl);
+        List<Task> findAll = findAll();
         for(Task task: findAll){
-            if(task.isCompleted()==false){
-                findAll.remove(task);
+            if(completed==true) {
+                if (task.isCompleted() == false) {
+                    findAll.remove(task);
+                }
+            } else if (completed == false){
+                if  (task.isCompleted()==true){
+                    findAll.remove(task);
+                }
             }
         }
         return findAll;
@@ -71,6 +108,9 @@ public class ToDoListImpl implements ToDoList {
 
     @Override
     public List<Task> findAll(LocalDateTime from, LocalDateTime to, Boolean completed) throws IllegalArgumentException {
+        if(to.isBefore(from)){
+            throw new IllegalArgumentException("end dateTime cannot be before starting datetime");
+        }
         if(from == null){
             from = LocalDateTime.MIN;
         }
@@ -78,35 +118,37 @@ public class ToDoListImpl implements ToDoList {
         if(to==null){
             to = LocalDateTime.MAX;
         }
-        List<Task> findAll = new ArrayList<>(tdl);
-        for(Task task: findAll){
-            if(task.getDateTime().isBefore(from) || task.getDateTime().isAfter(to)){
-                findAll.remove(task);
-            }
-            if(task.isCompleted()==false){
+        List<Task> findAll = findAll(completed);
+        for(Task task: findAll) {
+            if (task.getDateTime().isBefore(from) || task.getDateTime().isAfter(to)) {
                 findAll.remove(task);
             }
         }
+
         return findAll;
     }
 
     @Override
     public List<Task> findAll(Map<Task.Field, String> params, LocalDateTime from, LocalDateTime to, Boolean completed, boolean andSearch) throws IllegalArgumentException {
+        List<Task> findAll = findAll(to,from,completed);
+        List<Task> findAllM = new ArrayList<>(findAll);
 
+        if(params == null) {
+            return findAll;
+        }
+        for(Task t: findAll) {
+            for (Map.Entry<Task.Field, String> entry : params.entrySet()) {
+                if (entry.getKey() == null || entry.getValue() == null) {
+                    throw new IllegalArgumentException("null values in Map");
+                }
 
-        if(from == null){
-            from = LocalDateTime.MIN;
-        }
-        if(to==null){
-            to = LocalDateTime.MAX;
-        }
-        List<Task> findAll = new ArrayList<>(tdl);
-        for(Task task: findAll){
-            if(task.getDateTime().isBefore(from) || task.getDateTime().isAfter(to)){
-                findAll.remove(task);
-            }
-            if(task.isCompleted()==false){
-                findAll.remove(task);
+                if (andSearch) {
+                    if(entry.getKey()== Task.Field.LOCATION){
+                        if(t.getLocation().contains(entry.getValue())){
+
+                        }
+                    }
+                }
             }
         }
         return findAll;
